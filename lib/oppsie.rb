@@ -1,5 +1,5 @@
 require "oppsie/version"
 
 module Oppsie
-  # Your code goes here...
+  # I am very powerful. I will destroy you.
 end

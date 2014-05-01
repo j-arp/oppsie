@@ -1,15 +1,12 @@
 namespace :oppsie do
 
-  desc "push specific branch to github"
+  desc "push a specific branch to github. will be included with the deploy task"
   task :push do
     settings = read_config
     options = {app_id: settings["app_id"]}
+    options[:branch] = branch
 
-    if ENV["branch"]
-      options[:branch] = ENV["branch"]
-    else
-      options[:branch] = "master"
-    end
+
 
     puts "updating app #{options[:app_id]}"
     begin
@@ -20,12 +17,14 @@ namespace :oppsie do
 
   end
 
+  desc "deploy a branch (or master as a default) to OpsWorks. This will push any changes to Github, update your application settings in opsworks to the given branch, start the deployment, change the applications brach back to master"
   task :deploy => :push do
     settings = read_config
     puts "deploying branch #{ENV["branch"]} to opsworks "
     deploy(settings["stack_id"], settings["app_id"], ENV["branch"])
   end
 
+  desc "Will return the status of the last known deployment to Opsworks. Will put to the console the JSON response."
   task :status do
     status = read_config
     if status["last_deployment_id"]
@@ -36,6 +35,7 @@ namespace :oppsie do
     end
   end
 end
+
 
 
 
@@ -90,4 +90,12 @@ end
    else
     puts "ERROR:: Deployment failed"
    end
+  end
+
+
+  
+  def branch
+    if ENV["branch"]
+     ENV["branch"] || "master"
+    end
   end
