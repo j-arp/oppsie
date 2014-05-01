@@ -1,4 +1,4 @@
-namespace :opsworks do
+namespace :oppsie do
 
   desc "push specific branch to github"
   task :push do
@@ -12,9 +12,9 @@ namespace :opsworks do
     end
 
     puts "updating app #{options[:app_id]}"
-    begin 
+    begin
       system "git push origin #{options[:branch]}"
-      rescue 
+      rescue
         "ERROR:: Pushing to github failed"
       end
 
@@ -42,11 +42,11 @@ end
 def read_config
   ops_config = Hash.new
   ops_file = File.join(Rails.root, 'config', 'opsworks.yml')
-  
+
   YAML.load(File.open(ops_file)).each do |key, value|
     ops_config[key.to_s] = value
   end if File.exists?(ops_file)
-  
+
   return ops_config
 end
 
