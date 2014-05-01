@@ -35,7 +35,7 @@ module Oppsie
 
 		  def copy_rake_file
 		  	puts "create rake file"
-		    copy_file "opsworks.rake", "lib/tasks/opsworks.rake"
+		    copy_file "oppsie.rake", "lib/tasks/oppsie.rake"
 		  end
 
 
