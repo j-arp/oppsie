@@ -20,8 +20,8 @@ namespace :oppsie do
   desc "deploy a branch (or master as a default) to OpsWorks. This will push any changes to Github, update your application settings in opsworks to the given branch, start the deployment, change the applications brach back to master"
   task :deploy => :push do
     settings = read_config
-    puts "deploying branch #{ENV["branch"]} to opsworks "
-    deploy(settings["stack_id"], settings["app_id"], ENV["branch"])
+    puts "deploying branch #{branch} to opsworks "
+    deploy(settings["stack_id"], settings["app_id"], branch)
   end
 
   desc "Will return the status of the last known deployment to Opsworks. Will put to the console the JSON response."
@@ -93,9 +93,7 @@ end
   end
 
 
-  
+
   def branch
-    if ENV["branch"]
      ENV["branch"] || "master"
-    end
   end
