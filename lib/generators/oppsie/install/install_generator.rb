@@ -14,6 +14,9 @@ module Oppsie
 		  	copy_rake_file
 		  end
 
+ 		  def install
+		  	puts " use 'rails g oppsie:install {stack_id} {app_id}' to generate the needed yml file and rake tasks"
+		  end
 		  private
 
 		  def create_settings_config
