@@ -20,7 +20,7 @@ Or install it yourself as:
 
 After installing gem, run:
     
-    rails g oppsie:install {stack_id} {app_id}' 
+    rails g oppsie:install {stack_id} {app_id}
 
 This will generate a yml file that the gem uses to do its thing
 
