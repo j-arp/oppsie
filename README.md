@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After installing gem, run:
+    
+    rails g oppsie:install {stack_id} {app_id}' 
+
+This will generate a yml file that the gem uses to do its thing
 
 ## Contributing
 
